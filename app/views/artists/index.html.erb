@@ -1,0 +1,39 @@
+<h1 class="ui header">Artists<h1>
+
+    <div class="ui grid">
+      <% @artists.each do |artist| %>
+      <div class="sixteen wide mobile eight wide tablet four wide computer column">
+        <div class="ui card">
+          <div class="image">
+            <img src="https://robohash.org/<%= artist.genre %>?set=set3" />
+          </div>
+          <div class="content">
+            <%= link_to artist.artist_name, artists_path(artist), class: "header" %>
+          </div>
+          <div class="extra content">
+            <div>
+              <%= link_to(artists_path(artist.id)) do %>
+              <div class="ui primary button">
+                View
+              </div>
+              <% end %>
+            </div>
+            <div>
+
+              <%= link_to(edit_artist_path(artist)) do %>
+              <div class="ui button">
+                Edit
+              </div>
+              <br />
+              <% end %>
+              <%= link_to(artists_path(artist), method: :delete, data: { confirm: "Are you sure?" }) do %>
+              <div class="ui button">
+                Delete
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>

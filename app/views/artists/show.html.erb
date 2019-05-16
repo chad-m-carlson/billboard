@@ -1,0 +1,22 @@
+
+<div class="ui card">
+    <div class="image">
+      <img src="https://robohash.org/<%= @artist.artist_name %>?set=set4" />
+    </div>
+    <div class="content">
+      <p class="header">
+        <%= @artist.artist_name %>
+      </p>
+      <div class="description">
+        Genre: <%= @artist.genre %>
+      </div>
+      <div>
+        <h3>Top Song will go here</h3>
+      </div>
+    </div>
+    <div class="extra content">
+      <%# link_to  "All Songs", path %>
+      <%= link_to "Edit", edit_artist_path(@artist), class: "ui button blue" %> 
+      <%= link_to "Back", artists_index_path, class: "ui button" %>
+    </div>
+  </div>
