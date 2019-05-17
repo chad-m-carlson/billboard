@@ -1,0 +1,18 @@
+<h1><%= @song.id ? 'Edit Song' : 'Create Song' %></h1>
+<%= form_for [@artist, @song] do |f| %>
+
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name%>
+  <br />
+  <br />
+  <br />
+  <br />
+  <%= f.label :date_released, "Release Date" %>
+  <%= f.text_field :date_released%>
+  <br />
+  <br />
+  <br />
+  <br />
+  <%= f.submit %>
+
+<% end %>

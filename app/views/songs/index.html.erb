@@ -1,0 +1,11 @@
+<h1><%= @artist.artist_name %></h1>
+<h3>Song List</h3>
+
+<% @songs.each do |song| %>
+  <%= song.name %>
+  <%= link_to  "More Info", artist_song_path(@artist, song) %>
+  <br>
+<% end %>
+
+<%= link_to "Add a new song", new_artist_song_path(@artist.id), class: "ui button" %>
+<%= link_to "Back", artist_path(@artist.id), class: "ui button" %>

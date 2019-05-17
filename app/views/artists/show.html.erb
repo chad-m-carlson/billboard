@@ -8,15 +8,14 @@
         <%= @artist.artist_name %>
       </p>
       <div class="description">
-        Genre: <%= @artist.genre %>
-      </div>
-      <div>
-        <h3>Top Song will go here</h3>
+        <i>Genre: </i> <%= @artist.genre %>
+        <br />
+        <i>Top Song: </i> <%= @artist.songs.sample.name %>
       </div>
     </div>
     <div class="extra content">
-      <%# link_to  "All Songs", path %>
+      <%= link_to  "All Songs", artist_songs_path(@artist), class:"ui button blue" %>
       <%= link_to "Edit", edit_artist_path(@artist), class: "ui button blue" %> 
-      <%= link_to "Back", artist_path, class: "ui button" %>
+      <%# link_to "Back", artist_path, class: "ui button" %>
     </div>
   </div>

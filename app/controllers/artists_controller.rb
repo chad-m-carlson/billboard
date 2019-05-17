@@ -10,10 +10,11 @@ class ArtistsController < ApplicationController
 
   def new
     @artist = Artist.new
+    render partial: 'form'
   end
 
   def create
-    if @artist.update(params.require(:artist).permit(:artist_name, :genre))
+    if @artist.save(params.require(:artist).permit(:artist_name, :genre))
       redirect_to artists_path(@artist.id)
     else
       render :new
@@ -22,6 +23,7 @@ class ArtistsController < ApplicationController
 
   def edit
     @artist = Artist.find(params[:id])
+    render partial: 'form'
   end
 
   def update
