@@ -10,7 +10,7 @@
       <div class="description">
         <i>Genre: </i> <%= @artist.genre %>
         <br />
-        <i>Top Song: </i> <%= @artist.songs.sample.name %>
+        <i>Top Hit: </i> <%# @artist.songs.find_by(top_hit: true).song_name %>
       </div>
     </div>
     <div class="extra content">

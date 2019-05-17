@@ -2,7 +2,7 @@
 <h3>Song List</h3>
 
 <% @songs.each do |song| %>
-  <%= song.name %>
+  <%= song.song_name %>
   <%= link_to  "More Info", artist_song_path(@artist, song) %>
   <br>
 <% end %>

@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 2019_05_16_224317) do
   end
 
   create_table "songs", force: :cascade do |t|
-    t.string "name"
-    t.date "date_released"
+    t.string "song_name"
+    t.boolean "top_hit"
     t.bigint "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
