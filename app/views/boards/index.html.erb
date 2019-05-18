@@ -1,12 +1,26 @@
-<h1>Billboards</h1>
-
-
-<div class="ui bulleted list">
-    <% @boards.order(:id).each.with_index do |board, i|%>
-  <div class="item">
-    <%= link_to @boards[i].name, board_path(@boards[i]) %>
+<h1 class="ui horizontal divider header">
+  <i class="music note icon"></i>
+  Billboards
+</h1>
+<br />
+<div class="ui feed">
+<% @boards.each do |board| %>
+<div class="ui small feed">
+<h5 class="ui header">
+  <% if board.name != "No-list" %>
+    <h5>  
+      <%= link_to  board.name, board_path(board.id) %>
+    </h5>
+    <hr />
+    <% end%>
+</h5>
+<div class="event">
+  <div class="content">
+    <div class="summary">
+      </div>
+    </div>
   </div>
-  <% end%>
-  </div>
-
-  <%= link_to  "Back to Artists", artists_path %>
+</div>
+<% end %>
+<%# link_to "Add a new board", new_artist_song_path(@artist.id), class: "ui button green" %>
+<%# link_to "Back", artist_path(@artist.id), class: "ui button blue" %>
