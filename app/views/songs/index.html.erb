@@ -1,15 +1,18 @@
-<h1><%= @artist.artist_name %></h1>
-<h2>Song List</h2>
-<br />
+<h1 class="ui horizontal divider header">
+    <i class="music note icon"></i>
+    <%= @artist.artist_name %> Song List
+  </h1>
+  <br />
+<div class="ui feed">
 <% @songs.sort_by_name.each do |song| %>
-
 <div class="ui small feed">
   <h5 class="ui header"><%= song.song_name %></h5>
   <div class="event">
     <div class="content">
-      <p><% if song.board.name != "No-list" %>
-        
-        <%= song.board.name %>
+      <p><% if song.board.name == "No-list" %>
+              Billboard |  none
+         <% else%>
+              Billboard |  <%= song.board.name %>
         <% end%>
       </p>
       <div class="summary">
@@ -20,8 +23,8 @@
     </div>
   </div>
   <% end %>
-<%= link_to "Add a new song", new_artist_song_path(@artist.id), class: "ui button" %>
-<%= link_to "Back", artist_path(@artist.id), class: "ui button" %>
+<%= link_to "Add a new song", new_artist_song_path(@artist.id), class: "ui button green" %>
+<%= link_to "Back", artist_path(@artist.id), class: "ui button blue" %>
 <br />
 <br />
 <br />

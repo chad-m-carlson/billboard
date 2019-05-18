@@ -12,7 +12,6 @@ before_action :set_song, only: [:show, :edit, :update, :destroy]
 
   def new
     @song = @artist.songs.new
-    render partial: 'form'
   end
 
   def create
@@ -20,19 +19,18 @@ before_action :set_song, only: [:show, :edit, :update, :destroy]
     if @song.save(set_params)
       redirect_to artist_song_path(@artist, @song)
     else
-      render partial: 'form'
+      render :new
     end
   end
 
   def edit
-    render partial: 'form'
   end
   
   def update
     if @song.update(set_params)
       redirect_to artist_song_path(@artist, @song)
     else
-      render partial: "form"
+      render :new
     end
   end
 

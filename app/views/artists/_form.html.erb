@@ -1,20 +1,35 @@
-<h1><%= @artist.id ? 'Edit artist' : 'Create Artist' %></h1>
-<%= form_for @artist do |f| %>
+<h1 class="ui horizontal divider header">
+    <i class="music note icon"></i>
+    <%= @artist.id ? 'Edit artist' : 'Create Artist' %>
+  </h1>
+<div class="ui form">
 
-  <%= f.label :artist_name, "Name" %>
-  <%= f.text_field :artist_name %>
-  <br />
-  <br />
-  <br />
-  <br />
-  <%= f.label :genre, "Genre" %>
-  <%= f.text_field :genre %>
-  <br />
-  <br />
-  <br />
-  <br />
-  <%= f.label :album_art, "Album Art" %>
-  <%= f.text_field :album_art %>
-  <%= f.submit %>
+    <%= form_with(model: @artist, local: true, class: "ui form") do |f| %>
+    <div class="four fields">
+      <div class="field">
+  
+        <%= f.label :artist_name %>
+        <%= f.text_field :artist_name, required: true, autofocus: true %>
+        <br />
+        <br />
+        <%= f.label :genre %>
+        <%= f.select "genre", options_for_select(["Rock", "Country", "Pop", "Rap", "Classical", "Electronic"]) %>
+        <br />
+        <br />
+        <%= f.label :album_art, "Album Art Link" %>
+        <%= f.text_field :album_art, required: false %>
+      </div>
+    </div>
+      <br />
+      <br />
+      <%= f.submit class:"ui button green" %>
+      <br />
+      <br />
+    <% end %>
+  </div>
 
-<% end %>
+  <% if @artist.id %>
+  <%= link_to "Back", artist_path(@artist), class:"ui button blue" %>
+  <% else%>
+  <%= link_to "Back", artists_path, class:"ui button blue" %>
+  <% end%>
