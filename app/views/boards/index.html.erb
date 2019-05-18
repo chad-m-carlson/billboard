@@ -1,0 +1,12 @@
+<h1>Billboards</h1>
+
+
+<div class="ui bulleted list">
+    <% @boards.order(:id).each.with_index do |board, i|%>
+  <div class="item">
+    <%= link_to @boards[i].name, board_path(@boards[i]) %>
+  </div>
+  <% end%>
+  </div>
+
+  <%= link_to  "Back to Artists", artists_path %>

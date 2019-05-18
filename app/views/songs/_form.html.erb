@@ -7,8 +7,8 @@
   <br />
   <br />
   <br />
-  <%= f.label :top_hit, "Top Hit?" %>
-  <%= f.check_box :top_hit%>
+ <%= f.label :board_name, "Billboard" %>
+ <%= f.select "board_id", options_for_select(@boards.collect {|u| [u.name, u.id] }) %>
   <br />
   <br />
   <br />
@@ -16,3 +16,10 @@
   <%= f.submit %>
 
 <% end %>
+
+
+<% if @song.id %>
+  <%= link_to "Back", artist_songs_path(@artist), class:"ui button blue" %>
+  <% else%>
+  <%= link_to "Back", artist_path(@artist), class:"ui button blue" %>
+  <% end%>

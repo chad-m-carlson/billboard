@@ -1,6 +1,6 @@
 <h1><%= @song.song_name %></h1>
-<h3>Top Hit: <%= @song.top_hit %></h3>
 
+<h2>Currently on <%=@song.board_id %></h2><%#WRITE A METHOD TO DISPLAY ID?%>
 <%= link_to  "Edit Song", edit_artist_song_path(@artist, @song), class:"ui button blue" %>
 <%= link_to  "Delete Song", artist_song_path(@artist, @song),method: :delete, data: { confirm: "Are you sure?" }, class:"ui button blue" %>
 <%= link_to  "Back", artist_songs_path(@artist), class:"ui button blue" %>
