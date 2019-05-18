@@ -1,11 +1,27 @@
 <h1><%= @artist.artist_name %></h1>
-<h3>Song List</h3>
+<h2>Song List</h2>
+<br />
+<% @songs.sort_by_name.each do |song| %>
 
-<% @songs.each do |song| %>
-  <%= song.song_name %>
-  <%= link_to  "More Info", artist_song_path(@artist, song) %>
-  <br>
-<% end %>
-
+<div class="ui small feed">
+  <h5 class="ui header"><%= song.song_name %></h5>
+  <div class="event">
+    <div class="content">
+      <p><% if song.board.name != "No-list" %>
+        
+        <%= song.board.name %>
+        <% end%>
+      </p>
+      <div class="summary">
+           <%= link_to  "More Info", artist_song_path(@artist, song) %> 
+        </div>
+        <hr />
+      </div>
+    </div>
+  </div>
+  <% end %>
 <%= link_to "Add a new song", new_artist_song_path(@artist.id), class: "ui button" %>
 <%= link_to "Back", artist_path(@artist.id), class: "ui button" %>
+<br />
+<br />
+<br />

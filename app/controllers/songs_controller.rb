@@ -1,13 +1,13 @@
 class SongsController < ApplicationController
 before_action :set_artist
 before_action :set_board, only: [:new, :create, :edit, :update]
+before_action :set_song, only: [:show, :edit, :update, :destroy]
 
   def index
     @songs = @artist.songs
   end
 
   def show
-    @song = Song.find(params[:id])
   end
 
   def new
@@ -16,8 +16,8 @@ before_action :set_board, only: [:new, :create, :edit, :update]
   end
 
   def create
-    @song = @artist.songs.new(params.require(:song).permit(:song_name, :board_id))
-    if @song.save(params.require(:song).permit(:song_name,))
+    @song = @artist.songs.new(set_params)
+    if @song.save(set_params)
       redirect_to artist_song_path(@artist, @song)
     else
       render partial: 'form'
@@ -25,13 +25,11 @@ before_action :set_board, only: [:new, :create, :edit, :update]
   end
 
   def edit
-    @song = Song.find(params[:id])
     render partial: 'form'
   end
   
   def update
-    @song = Song.find(params[:id])
-    if @song.update(params.require(:song).permit(:song_name, :board_id))
+    if @song.update(set_params)
       redirect_to artist_song_path(@artist, @song)
     else
       render partial: "form"
@@ -39,7 +37,6 @@ before_action :set_board, only: [:new, :create, :edit, :update]
   end
 
   def destroy
-    @song = Song.find(params[:id])
     @song.destroy
     redirect_to artist_songs_path(@artist)
   end
@@ -52,6 +49,14 @@ before_action :set_board, only: [:new, :create, :edit, :update]
 
     def set_board
       @boards = Board.all.order(:id)
+    end
+
+    def set_song
+      @song = Song.find(params[:id])
+    end
+
+    def set_params
+      params.require(:song).permit(:song_name, :board_id)
     end
 
 end

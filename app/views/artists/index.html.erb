@@ -1,39 +1,33 @@
-<h1 class="ui header">Artists<h1>
-
-    <div class="ui grid">
-      <% @artists.each do |artist| %>
-      <div class="sixteen wide mobile eight wide tablet four wide computer column">
-        <div class="ui card">
-          <div class="image">
-            <img src="https://robohash.org/<%= artist.genre %>?set=set3" />
-          </div>
-          <div class="content">
-            <%= link_to artist.artist_name, artists_path(artist), class: "header" %>
-          </div>
-          <div class="extra content">
-            <div>
-              <%= link_to(artist_path(artist.id)) do %>
-              <div class="ui primary button">
-                View
-              </div>
-              <% end %>
-            </div>
-            <div>
-
-              <%= link_to(edit_artist_path(artist)) do %>
-              <div class="ui button">
-                Edit
-              </div>
-              <br />
-              <% end %>
-              <%= link_to(artist_path(artist), method: :delete, data: { confirm: "Are you sure?" }) do %>
-              <div class="ui button">
-                Delete
-              </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
+<div class="ui grid">
+  <% @artists.sort_by_name.each do |artist| %>
+  <div class="sixteen wide mobile eight wide tablet five wide computer column">
+    <div class="ui card">
+      <div class="image">
+        <img src="<%= artist.album_art %>" />
       </div>
-      <% end %>
+      <div class="content">
+        <h3>
+          <%= artist.artist_name %>
+        </h3>
+      </div>
+      <div class="extra content">
+        <%= link_to(artist_path(artist.id)) do %>
+        <div class="ui bottom attached button">
+            View
+        </div>
+        <% end %>
+        <%= link_to(edit_artist_path(artist)) do %>
+        <div class="ui bottom attached button">
+            Edit
+        </div>
+        <% end %>
+        <%= link_to(artist_path(artist), method: :delete, data: { confirm: "Are you sure?" }) do %> 
+        <div class="ui bottom attached button">
+            Delete
+        </div>
+        <% end %>
+      </div>
     </div>
+  </div>
+<% end %>
+</div>

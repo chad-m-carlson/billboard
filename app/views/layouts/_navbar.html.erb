@@ -1,12 +1,10 @@
 <div class="ui menu">
     <div class="header item">
-      Billboard Application
+      <%= link_to  "Billboard Application", root_path, class:"header", style:
+      "color: black" %>
     </div>
     <%= link_to  "Artists", artists_path, class:"item" %>
     <%= link_to  "Billboards", boards_path, class:"item" %>
-    <a class="item">
-      Top 100
-    </a>
     <div class="right menu">
       <%= link_to  "Add Artist", new_artist_path, class:"item align-right" %>
     </div>

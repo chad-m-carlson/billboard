@@ -1,7 +1,7 @@
 
 <div class="ui card">
     <div class="image">
-      <img src="https://robohash.org/<%= @artist.artist_name %>?set=set4" />
+      <img src="<%= @artist.album_art %>" />
     </div>
     <div class="content">
       <p class="header">
@@ -14,8 +14,20 @@
       </div>
     </div>
     <div class="extra content">
-      <%= link_to  "All Songs", artist_songs_path(@artist), class:"ui button blue" %>
-      <%= link_to "Edit", edit_artist_path(@artist), class: "ui button blue" %> 
-      <%# link_to "Back", artist_path, class: "ui button" %>
-    </div>
+        <%= link_to(artist_songs_path(@artist)) do %>
+        <div class="ui bottom attached button">
+            View Songs
+        </div>
+        <% end %>
+    <div class="extra content">
+        <%= link_to(edit_artist_path(@artist)) do %>
+        <div class="ui bottom attached button">
+            Edit
+        </div>
+        <% end %>
+        <%= link_to(artist_path(@artist), method: :delete, data: { confirm: "Are you sure?" }) do %> 
+        <div class="ui bottom attached button">
+            Delete
+        </div>
+        <% end %>
   </div>

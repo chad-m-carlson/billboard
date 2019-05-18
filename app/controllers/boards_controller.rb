@@ -16,8 +16,8 @@ class BoardsController < ApplicationController
   end
   
   def create
-      @board = @board.new(params.require(:board).permit(:name, :description))
-    if @board.save(params.require(:board).permit(:name, :description))
+      @board = @board.new(set_params)
+    if @board.save(set_params)
       redirect_to boards_path
     else
       render partial: 'form'
@@ -29,7 +29,7 @@ class BoardsController < ApplicationController
   end
 
   def update
-    if @board.update(params.require(:board).permit(:name, :description))
+    if @board.update(set_params)
       redirect_to boards_path
     else
       render partial: 'form'
@@ -45,5 +45,9 @@ class BoardsController < ApplicationController
   
   def find_board
     @board = Board.find(params[:id])
+  end
+
+  def set_params
+    params.require(:board).permit(:name, :description)
   end
 end
