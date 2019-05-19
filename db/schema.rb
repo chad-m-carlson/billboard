@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_18_203530) do
+ActiveRecord::Schema.define(version: 2019_05_19_233431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,11 +47,14 @@ ActiveRecord::Schema.define(version: 2019_05_18_203530) do
     t.datetime "updated_at", null: false
     t.bigint "board_id"
     t.string "album_art"
+    t.bigint "album_id"
+    t.index ["album_id"], name: "index_songs_on_album_id"
     t.index ["artist_id"], name: "index_songs_on_artist_id"
     t.index ["board_id"], name: "index_songs_on_board_id"
   end
 
   add_foreign_key "albums", "artists"
+  add_foreign_key "songs", "albums"
   add_foreign_key "songs", "artists"
   add_foreign_key "songs", "boards"
 end
