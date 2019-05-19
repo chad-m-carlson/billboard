@@ -12,27 +12,24 @@ class BoardsController < ApplicationController
   
   def new
     @board = Board.new
-    render partial: 'form'
   end
   
   def create
-      @board = @board.new(set_params)
+      @board = Board.new(set_params)
     if @board.save(set_params)
       redirect_to boards_path
     else
-      render partial: 'form'
     end
   end
 
   def edit
-    render partial: 'form'
   end
 
   def update
     if @board.update(set_params)
       redirect_to boards_path
     else
-      render partial: 'form'
+      render :edit
     end
   end
 

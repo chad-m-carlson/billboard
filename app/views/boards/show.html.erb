@@ -21,3 +21,5 @@
 <br />
 <br />
 <%= link_to "Back", boards_path, class: "ui button blue" %>
+<%= link_to  "Edit Billboard", edit_board_path(@board), class: "ui button green" %>
+<%= link_to  "Delete Billboard", board_path(@board), method: :delete, data: { confirm: "Are you sure?"}, class:"ui button red" %>
