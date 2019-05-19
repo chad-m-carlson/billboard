@@ -16,7 +16,11 @@
         <% end%>
       </p>
       <div class="summary">
+        <% if rand(0..1) == 1%>
            <%= link_to  "More Info", artist_song_path(@artist, song) %> 
+           <% else%>
+           <%= link_to "More Info", 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' %>
+           <% end%>
         </div>
         <hr />
       </div>
