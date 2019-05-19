@@ -1,14 +1,20 @@
-
-<%= @board.name %>
-<%# @board.songs.each.with_index do |song, i|%>
-<%# end%>
+<h1 class="ui horizontal divider header">
+    <i class="music note icon"></i>
+    <%= @board.name %>
+  </h1>
 <br />
 <br />
-
-
 <% index = 0%>
 <% @board.songs.each do %>
-  <%= @board.songs[index].song_name %> | <%= @board.songs[index].artist.artist_name %><br />
+
+<div class="ui ordered list">
+  <p>
+    <%= "#{index + 1})"%>&nbsp &nbsp <%= @board.songs[index].song_name %> | <%= @board.songs[index].artist.artist_name %><br />
+  </p>
+
+</div>
+
+
   <% index += 1 %>
 <% end%>
 <br />
