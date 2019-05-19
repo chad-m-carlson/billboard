@@ -13,8 +13,14 @@
       <%= f.text_field :song_name, required: true, autofocus: true %>
       <br />
       <br />
-      <%= f.label :Billboard %>
-      <%= f.select "board_id", options_for_select(@boards.collect {|u| [u.name, u.id] }) %>
+<%= f.radio_button(:board_id, "2") %>
+<%= f.label(:board_id, "In your top 20.") %><br />
+<%= f.radio_button(:board_id, "4") %>
+<%= f.label(:board_id, "Your Least Favorite Songs") %><br />
+<%= f.radio_button(:board_id, "5") %>
+<%= f.label(:board_id, "Hate It") %><br />
+<%= f.radio_button(:board_id, "") %>
+<%= f.label(:board_id, "Don't put on a list") %><br />
     </div>
   </div>
     <br />

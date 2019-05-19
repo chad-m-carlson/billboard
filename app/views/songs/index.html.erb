@@ -9,7 +9,7 @@
   <h5 class="ui header"><%= song.song_name %></h5>
   <div class="event">
     <div class="content">
-      <p><% if song.board.name == "No-list" %>
+      <p><% if song.board == nil %>
               Billboard |  none
          <% else%>
               Billboard |  <%= song.board.name %>
