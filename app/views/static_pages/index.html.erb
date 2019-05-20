@@ -9,17 +9,25 @@
           <%= Board.find(2).name %> Billboard
       </h2>     
       <p>
+        <% if Board.find(2).songs.count < 1 %>
+        <%= puts "No songs" %>
+        <% else%>
         <%id = Board.find(2).songs.first.artist_id %>
         Top Song:  &nbsp <%= Board.find(2).songs.first.song_name%> &nbsp | &nbsp <%=  Artist.find_by(id: id).artist_name%>
+        <% end%>
       </p>
     </div>
     <div class="ui segment">
         <h2>
-            <%= Board.find(4).name %> Billboard
+            <%= Board.find(3).name %>
         </h2>     
         <p>
-          <%id = Board.find(4).songs.first.artist_id%>
-          Top Song:  &nbsp <%= Board.find(4).songs.first.song_name%>&nbsp | &nbsp <%=  Artist.find_by(id: id).artist_name%>
+            <% if Board.find(3).songs.count < 1 %>
+            <%= puts "No songs" %>
+            <% else%>
+          <%id = Board.find(3).songs.first.artist_id%>
+          Top Song:  &nbsp <%= Board.find(3).songs.first.song_name%>&nbsp | &nbsp <%=  Artist.find_by(id: id).artist_name%>
+          <% end%>
         </p>
     </div>
    
