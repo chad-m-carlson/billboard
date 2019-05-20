@@ -7,5 +7,10 @@ Rails.application.routes.draw do
 resources :artists do
   resources :albums
 end
+
+resources :artists do
+  resources :songs
+end
+
 resources :boards
 end

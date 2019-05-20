@@ -9,16 +9,16 @@
   <h5 class="ui header"><%= song.song_name %></h5>
   <div class="event">
     <div class="content">
-      <p><% if song.board.name == "No-list" %>
-              Billboard |  none
+      <p><% if song.album.album_name == nil %>
+              ALbum |  none
          <% else%>
-              Billboard |  <%= song.board.name %>
+              Billboard |  <%= song.album.album_name %>
         <% end%>
       </p>
       <div class="summary">
-           <%= link_to  "More Info", artist_song_path(@artist, song) %> 
+           <%# link_to  "More Info", artist_song_path(@artist, song) %> 
         </div>
-        <hr />
+
       </div>
     </div>
   </div>

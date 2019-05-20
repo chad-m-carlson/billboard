@@ -1,0 +1,43 @@
+<h1 class="ui horizontal divider header">
+    <i class="music note icon"></i>
+    Available Albums
+  </h1>
+<div class="ui grid">
+  <% @albums.each do |album| %>
+  <div class="sixteen wide mobile eight wide tablet five wide computer column">
+    <div class="ui card">
+      <div class="image">
+        <img src="#>" />
+      </div>
+      <div class="content">
+        <h3>
+          <%= album.album_name %>
+        </h3>
+      </div>
+      <div class="extra content">
+        <%= link_to(artist_songs_path(@artist.id)) do %>
+        <div class="ui bottom attached blue button">
+            View All Songs
+        </div>
+        <% end %>
+      <div class="extra content">
+        <%= link_to(artist_album_path(@artist.id, album.id)) do %>
+        <div class="ui bottom attached button">
+            View
+        </div>
+        <% end %>
+        <%= link_to(edit_artist_album_path(@artist.id, album.id)) do %>
+        <div class="ui bottom attached button">
+            Edit
+        </div>
+        <% end %>
+        <%= link_to(album_path(album), method: :delete, data: { confirm: "Are you sure?" }) do %> 
+        <div class="ui bottom attached button">
+            Delete
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
