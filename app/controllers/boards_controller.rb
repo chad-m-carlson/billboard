@@ -3,7 +3,7 @@ class BoardsController < ApplicationController
   before_action :find_board, only: [:show, :edit, :update, :destroy]
 
   def index
-    @boards = Board.all
+    @boards = current_user.boards
   end
 
   def show
@@ -15,10 +15,11 @@ class BoardsController < ApplicationController
   end
   
   def create
-      @board = Board.new(set_params)
-    if @board.save(set_params)
+      @board = current_user.boards.new(set_params)
+    if @board.save
       redirect_to boards_path
     else
+      render :new
     end
   end
 
@@ -41,10 +42,11 @@ class BoardsController < ApplicationController
   private
   
   def find_board
-    @board = Board.find(params[:id])
+    @board = current_user.boards.find(params[:id])
   end
 
+
   def set_params
-    params.require(:board).permit(:name, :description)
+    params.require(:board).permit(:name, :description, :user_id)
   end
 end

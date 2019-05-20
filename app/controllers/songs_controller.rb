@@ -1,10 +1,11 @@
 class SongsController < ApplicationController
 before_action :set_artist
-before_action :set_board, only: [:new, :create, :edit, :update]
+before_action :set_board, only: [:new, :create, :edit, :update, :index]
 before_action :set_song, only: [:show, :edit, :update, :destroy]
 
   def index
     @songs = @artist.songs
+    @user_id = current_user.id
   end
 
   def show
@@ -12,6 +13,7 @@ before_action :set_song, only: [:show, :edit, :update, :destroy]
 
   def new
     @song = @artist.songs.new
+    # @user_id = current_user.id
   end
 
   def create
@@ -24,6 +26,7 @@ before_action :set_song, only: [:show, :edit, :update, :destroy]
   end
 
   def edit
+    # @user_id = current_user.id
   end
   
   def update
@@ -46,7 +49,7 @@ before_action :set_song, only: [:show, :edit, :update, :destroy]
     end
 
     def set_board
-      @boards = Board.all.order(:id)
+      @boards = current_user.boards.all.order(:id)
     end
 
     def set_song
