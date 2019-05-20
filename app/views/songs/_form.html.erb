@@ -15,8 +15,12 @@
       <br />
       <% boards = @boards%>
       <% boards.each_with_index do |b, i|%>
-      <%= f.label(:board_id, boards[i].name) %> <%=f.radio_button(:board_id, "#{boards[i].id}") %>
+      <br />
+      <%= f.label(:board_id, boards[i].name) %>
+      <%=f.radio_button(:board_id, "#{boards[i].id}") %>
+       <br />
       <% end%>
+      <br />
       <%= f.label(:board_id, "Remove From All Lists") %>
       <%= f.radio_button(:board_id, '') %>
     </div>

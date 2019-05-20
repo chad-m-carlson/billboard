@@ -35,6 +35,7 @@ class BoardsController < ApplicationController
   end
 
   def destroy
+    @board.songs.all.update(board_id: nil)
     @board.destroy
     redirect_to boards_path
   end
