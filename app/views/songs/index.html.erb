@@ -1,6 +1,6 @@
 <h1 class="ui horizontal divider header">
     <i class="music note icon"></i>
-    <%= @artist.artist_name %> Song List
+    <%= @artist.albums.ids %> Song List
   </h1>
   <br />
 <div class="ui feed">
@@ -9,11 +9,8 @@
   <h5 class="ui header"><%= song.song_name %></h5>
   <div class="event">
     <div class="content">
-      <p><% if song.album.album_name == nil %>
-              ALbum |  none
-         <% else%>
-              Billboard |  <%= song.album.album_name %>
-        <% end%>
+              Billboard |  <%# song.album(id) %>
+
       </p>
       <div class="summary">
            <%# link_to  "More Info", artist_song_path(@artist, song) %> 

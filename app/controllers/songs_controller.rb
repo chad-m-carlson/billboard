@@ -1,5 +1,6 @@
 class SongsController < ApplicationController
-before_action :set_artist
+before_action :set_artist 
+
 before_action :set_board, only: [:new, :create, :edit, :update]
 before_action :set_song, only: [:show, :edit, :update, :destroy]
 
@@ -40,6 +41,7 @@ before_action :set_song, only: [:show, :edit, :update, :destroy]
   end
   
   private
+
 
     def set_artist
       @artist = Artist.find(params[:artist_id])
