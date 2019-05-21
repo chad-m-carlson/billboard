@@ -1,13 +1,34 @@
 
 
 <img src="http://petshopboys.co.uk/media/article-images/600/74d6eb8a4ffe6dcd60a0e41ec9474d24.jpg" class="ui medium bordered image" style="margin: 0 auto">
+<div style="text-align: center">
+  <h1>Welcome <%= current_user.first_name %></h1>
+</div>
 
-
+<h3>Your Billboards</h3>
 <div class="ui horizontal segments">
+  <div class="ui segment">
+    <% current_user.boards.each do |b|%>
+    <% @b = b%>
     <div class="ui segment">
-      <p>Content here</p>
+      <h2>
+        <%= b.name %>
+      </h2>
+      <ul>
+        <% b.songs.each.with_index do |song, i| %>
+        <li>
+          <%= song.song_name %> | <%= song.artist.artist_name %>
+          <% break if i >= 3%>
+          <% end%>
+        </li>
+        <li>
+          <%= link_to  "See the rest", board_path(@b.id) %>
+        </li>
+      </ul>
     </div>
-    <div class="ui segment">
-      <p>Content HEre</p>
-    </div>
-   
+    <% end%>
+  </div>
+  <div class="ui segment">
+    <p>Content HEre</p>
+  </div>
+  

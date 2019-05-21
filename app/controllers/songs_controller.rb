@@ -9,11 +9,12 @@ before_action :set_song, only: [:show, :edit, :update, :destroy]
   end
 
   def show
+    @user_id = current_user.id
   end
 
   def new
     @song = @artist.songs.new
-    # @user_id = current_user.id
+    @user_id = current_user.id
   end
 
   def create
@@ -26,7 +27,7 @@ before_action :set_song, only: [:show, :edit, :update, :destroy]
   end
 
   def edit
-    # @user_id = current_user.id
+    @user_id = current_user.id
   end
   
   def update

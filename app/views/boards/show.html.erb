@@ -1,27 +1,20 @@
 <h1 class="ui horizontal divider header">
     <i class="music note icon"></i>
-    <%= @board.name %>
   </h1>
 <br />
 <br />
 <div class="ui ordered list">
   <ol>
-
-    <% @board.songs.each_with_index do |b, i|%>
+    <% @board.songs.each.with_index do |b, i|%>
     <li>
-      <%= @board.songs[i].song_name %> | <%= @board.songs[i].artist.artist_name %>
+      <%= b.song_name %> | <%= b.artist.artist_name %>
     </li>
-    
-    
     <% end%>
   </ol>
 </div>
-  
-
-
 <br />
 <br />
 <br />
 <%= link_to "Back", boards_path, class: "ui button blue" %>
-<%= link_to  "Edit Billboard", edit_board_path(@board), class: "ui button green" %>
-<%= link_to  "Delete Billboard", board_path(@board), method: :delete, data: { confirm: "Are you sure?"}, class:"ui button red" %>
+<%= link_to  "Edit Billboard", edit_board_path(@board.id), class: "ui button green" %>
+<%= link_to  "Delete Billboard", board_path(@board.id), method: :delete, data: { confirm: "Are you sure?"}, class:"ui button red" %>

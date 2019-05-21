@@ -1,19 +1,13 @@
 <h1><%= @song.song_name %></h1>
-
 <% if @song.board == nil%>
-  <h4>Currently Not On Any Lists</h4>
+  <p> Not On Any Lists</p>
   <% else%>
-  <% if @song.board.user_id == @user_id%>
-  <h2>Billboard</h2><br/>
-  <h3><%= @song.board.name %></h3>
-  <% end%>
+    <% if @song.board.user_id == @user_id%>
+      <h2>Billboard &nbsp | &nbsp<%= @song.board.name %></h2>
+    <% end%>
 <% end%>
-<!-- <% if @song.board == nil %>
-  <h2><% "Currently not on any billboards" %></h2>
-  <% else%>
-<h2>Currently on <%=@song.board.name %></h2>
-<% end%> -->
-<h3>Put album info here</h3>
+<h3>Album:</h3>
+<h4>Released:</h4>
 <%= link_to  "Edit Song", edit_artist_song_path(@artist, @song), class:"ui button green" %>
 <%= link_to  "Delete Song", artist_song_path(@artist, @song),method: :delete, data: { confirm: "Are you sure?" }, class:"ui button red" %>
 <%= link_to  "Back", artist_songs_path(@artist), class:"ui button blue" %>

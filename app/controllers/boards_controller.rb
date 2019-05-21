@@ -1,12 +1,13 @@
 class BoardsController < ApplicationController
-
+  before_action :set_current_user_boards, only: [:index]
   before_action :find_board, only: [:show, :edit, :update, :destroy]
 
   def index
-    @boards = current_user.boards
+
   end
 
   def show
+
   end
   
   
@@ -49,5 +50,9 @@ class BoardsController < ApplicationController
 
   def set_params
     params.require(:board).permit(:name, :description, :user_id)
+  end
+
+  def set_current_user_boards
+    @boards = current_user.boards
   end
 end

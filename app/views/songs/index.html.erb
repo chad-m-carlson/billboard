@@ -12,10 +12,16 @@
       <p>
         <% if song.board %>
             <% if song.board.user_id == @user_id %>
-            Billboard |  That worked
+            Billboard |  <%= song.board.name %>
             <% end%>
           <% elsif %>
-          There is no board
+          <p>
+            Not on any billboards
+          </p>
+          <%# form_for @board, @song do |f| %>
+          <%# f.label :board_id, "Add to a billboard", style:"padding-right: 20px" %>
+          <%# f.select "board_id", options_for_select(@boards.collect {|u| [u.name, u.id] }) %> <%# f.submit class:"ui button"%>
+          <%# end %>
         <% end%>
       </p>
       <div class="summary">
